@@ -18,14 +18,16 @@
     <tbody>
     <tr>
     <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        @foreach($companies as $company)
+        <th scope="row">{{$company->pavadinimas}}</th>
+        <td>{{$company->kodas}}</td>
+        <td>{{$company->pvm_kodas}}</td>
+        <td>{{$company->adresas}}</td>
+        <td>{{$company->telefonas}}</td>
+        <td>{{$company->el_pastas}}</td>
+        <td>{{$company->veikla}}</td>
+        <td>{{$company->vadovas}}</td>
+        @endforeach
     </tr>
     </tbody>
 </table>

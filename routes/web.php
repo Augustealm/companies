@@ -19,4 +19,5 @@ Route::get('/edit', 'CompanyController@edit');
 Route::get('/all-companies', 'CompanyController@all');
 Route::get('/all-info', 'CompanyController@info');
 Route::post('/store-company', 'CompanyController@store');
-
+Route::get('/edit-company/{company}', 'CompanyController@editCompany');
+Route::patch('/store-update/{company}', 'CompanyController@storeUpdate');

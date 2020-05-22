@@ -10,19 +10,25 @@
         </div>
     @endif
 
-    <form method="POST" action="/store-company" class="form-horizontal">
+ <form method="POST" action="/store-company" class="form-horizontal">
         {{csrf_field()}}
-        <h3 class="mt-5 ml-3 text-info">Įmonių paieška</h3>
-        <div class="input-group mt-4">
-            <div class="input-group mb-3 col-10">
-                <div class="input-group-prepend">
-                    <span class="input-group-text align-middle" id="basic-addon1"><i class="fas fa-search"></i></span>
+    <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-5 mt-5 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <main role="main" class="inner cover">
+                <h1 class="cover-heading text-info">Įmonių paieška.</h1>
+                <p class="lead">Įmonių paiešką galima atlikti pagal įmonės pavadinimą.</p>
+                <div class="input-group mb-3 col-10">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text align-middle" id="basic-addon1"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" name="pavadinimas" id="pavadinimas" class="form-control">
+
+                    <a href="#" class="btn btn-lg bg-info text-white">Paieška</a>
                 </div>
-                <input type="text" class="form-control" placeholder="Ieškoti įmonės" aria-label="Ieškoti įmonės" aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary bg-info text-white" type="button">Paieška</button>
-            </div>
-            </div>
-        </div>
-    </form>
+            </main>
+        </header>
+    </div>
+    </body>
+ </form>
 @endsection
