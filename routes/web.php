@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CompanyController@index');
+Route::get('/add-company', 'CompanyController@add');
+Route::get('/edit', 'CompanyController@edit');
+Route::get('/all-companies', 'CompanyController@all');
+Route::get('/all-info', 'CompanyController@info');
+Route::post('/store-company', 'CompanyController@store');
+
