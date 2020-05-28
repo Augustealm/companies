@@ -66,6 +66,7 @@
             </div>
             <input type="text" name="vadovas" id="vadovas" class="form-control">
         </div>
+
     </div>
     <div class="float-right mr-3">
         <button type="submit" class="btn btn-primary mb-3 mb-sm-0 pr-2">Pridėti<i class="pl-2 fas fa-plus fa-lg"></i></button>

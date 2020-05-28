@@ -1,6 +1,8 @@
 @extends('main')
 @section('content')
-<h4 class="mt-5 ml-3 text-info">Visa informacija apie įmones</h4>
+
+
+<h4 class="mt-5 pt-5 ml-3 text-info">Visa informacija apie įmonę</h4>
 
 <table class="table mt-5">
     <thead>
@@ -15,11 +17,14 @@
         <th scope="col">Vadovas</th>
     </tr>
     </thead>
+
+    <form method="POST" action="/all-info/{{$company->id}}" class="form-horizontal">
+        {{csrf_field()}}
+        {{method_field('PATCH')}}
     <tbody>
     <tr>
     <tr>
-        @foreach($companies as $company)
-        <th scope="row">{{$company->pavadinimas}}</th>
+        <td>{{$company->pavadinimas}}</td>
         <td>{{$company->kodas}}</td>
         <td>{{$company->pvm_kodas}}</td>
         <td>{{$company->adresas}}</td>
@@ -27,8 +32,8 @@
         <td>{{$company->el_pastas}}</td>
         <td>{{$company->veikla}}</td>
         <td>{{$company->vadovas}}</td>
-        @endforeach
     </tr>
     </tbody>
+    </form>
 </table>
 @endsection

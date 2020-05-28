@@ -7,19 +7,23 @@
 <table class="table mt-5">
     <thead>
     <tr>
-        <th scope="col">Įmonės pavadinimas</th>
+        <th scope="col">Pvadinimas</th>
         <th scope="col">Adresas</th>
         <th scope="col">El.paštas</th>
     </tr>
     </thead>
-    @foreach($companies as $company)
+
     <tbody>
     <tr>
+    @foreach($companies as $company)
     <tr>
-        <th scope="row"><a href="/all-info">{{$company->pavadinimas}}</a></th>
+        <td><a href="/all-info/{{$company->id}}">{{$company->pavadinimas}}</a></td>
         <td>{{$company->adresas}}</td>
         <td>{{$company->el_pastas}}</td>
     </tr>
-    </tbody> @endforeach
+    @endforeach
+    </tbody>
+
 </table>
+    {{$companies-> links()}}
 @endsection

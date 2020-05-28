@@ -23,6 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->string('el_pastas');
             $table->text('veikla');
             $table->string('vadovas');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
