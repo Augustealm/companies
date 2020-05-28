@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Symfony\Component\Console\Input\Input;
 
 class CompanyController extends Controller
@@ -17,6 +18,7 @@ class CompanyController extends Controller
     }
 
     public function add(){
+
         return view('pages.add-company');
     }
 
@@ -26,6 +28,9 @@ class CompanyController extends Controller
     }
 
     public function editCompany(Company $company){
+        if (Gate::denies('edit-company', $company)){
+            return view('pages.home');
+        }
         return view('pages.edit-company', ['company'=>$company]);
     }
 
@@ -38,7 +43,8 @@ class CompanyController extends Controller
             'telefonas'=>['required', 'max:12'],
             'el_pastas'=>['required', 'regex:/(.+)@(.+)\.(.+)/i'],
             'veikla'=>['required', 'max:70'],
-            'vadovas'=>['required', 'max:40']
+            'vadovas'=>['required', 'max:40'],
+            'user_id'=> auth()->id()
         ]);
 
         Company::where ('id', $company->id)->update($request->only(['pavadinimas', 'kodas', 'pvm_kodas', 'adresas', 'telefonas', 'el_pastas', 'veikla', 'vadovas']));
@@ -65,7 +71,8 @@ class CompanyController extends Controller
             'telefonas'=> request('telefonas'),
             'el_pastas' => request('el_pastas'),
             'veikla'=> request('veikla'),
-            'vadovas'=> request('vadovas')
+            'vadovas'=> request('vadovas'),
+            'user_id'=> auth()->id()
         ]);
 
         session()->flash('notif', 'Informacija sėkmingai išsaugota!');
@@ -83,6 +90,9 @@ class CompanyController extends Controller
 
 
     public function delete(Company $company){
+        if(Gate::denies('delete', $company)){
+            return view('pages.home');
+        }
         $company->delete();
         return view('pages.home');
 
