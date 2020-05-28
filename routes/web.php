@@ -18,7 +18,7 @@ Route::get('/', 'CompanyController@index');
 Route::get('/add-company', 'CompanyController@add');
 Route::get('/edit', 'CompanyController@edit');
 Route::get('/all-companies', 'CompanyController@all');
-
+Route::get('/restrict', 'CompanyController@restrict');
 Route::get('/all-info/{company}', 'CompanyController@info');
 Route::post('/store-company', 'CompanyController@store');
 Route::get('/edit-company/{company}', 'CompanyController@editCompany');

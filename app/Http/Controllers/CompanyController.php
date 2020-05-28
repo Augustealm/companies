@@ -26,10 +26,13 @@ class CompanyController extends Controller
         $companies = Company::paginate(6);
         return view('pages.edit', compact('companies'));
     }
+    public function restrict(){
+        return view('pages.restrict');
+    }
 
     public function editCompany(Company $company){
         if (Gate::denies('edit-company', $company)){
-            return view('pages.home');
+            return view('pages.restrict');
         }
         return view('pages.edit-company', ['company'=>$company]);
     }
@@ -91,7 +94,7 @@ class CompanyController extends Controller
 
     public function delete(Company $company){
         if(Gate::denies('delete', $company)){
-            return view('pages.home');
+            return view('pages.restrict');
         }
         $company->delete();
         return view('pages.home');
